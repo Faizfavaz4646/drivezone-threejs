@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+/* Your theme variables */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* Reset and full screen setup */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Full screen canvas layout */
+main {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
