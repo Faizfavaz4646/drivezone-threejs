@@ -59,7 +59,6 @@ next-env.d.ts
 # ========================
 # 3D Assets (optional: ignore if pushing separately or using Git LFS)
 # ========================
-*.glb
 *.gltf
 *.fbx
 *.obj
