@@ -4,7 +4,7 @@ import { useRef } from "react";
 import * as THREE from "three"
  export function Flight(){
     const flightRef=useRef<THREE.Group>(null)
-    const {scene}=useGLTF('/flight.glb')
+    const {scene}=useGLTF('/models/flight.glb')
     let angle=useRef(0)
 
     useFrame(() => {

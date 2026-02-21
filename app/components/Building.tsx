@@ -32,5 +32,5 @@ export default function Building({
 }
 
 //  Preload the GLTF outside the component
-useGLTF.preload('/build1.glb')
-useGLTF.preload('/building.glb')
+useGLTF.preload('/models/build1.glb')
+useGLTF.preload('/models/building.glb')

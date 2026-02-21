@@ -16,7 +16,7 @@ export default function Tree({
   scale = [0.1, 0.2, 0.1],
 }: TreeProps) {
   const treeRef = useRef<Mesh>(null);
-  const { scene } = useGLTF('/tree.glb');
+  const { scene } = useGLTF('/models/tree.glb');
   const [grassMap, grassNormal] = useTexture([
     '/grass.jpeg',
    

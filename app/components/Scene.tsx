@@ -111,18 +111,18 @@ export default function Scene({ isNight }: SceneProps) {
 
       {/*  Buildings - static positions */}
       <Building
-        path="/build1.glb"
+        path="/models/build1.glb"
         position={[-250, 0, -390]}
         scale={[100, 70, 80]}
         rotation={[0, 6.3, 0]}
       />
       <Building
-        path="/building.glb"
+        path="/models/building.glb"
         position={[60, 0, -390]}
         scale={[30, 30, 10]}
       />
       <Building
-        path="/build4.glb"
+        path="/models/build4.glb"
         position={[780, 0, 2]}
         scale={[80, 50, 10]}
          rotation={[0, -1.6,0]}

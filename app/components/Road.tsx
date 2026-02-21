@@ -19,7 +19,7 @@ export default function RoadSett({
  
 }: RoadProps) {
   const roadRef = useRef<Mesh>(null);
-  const { scene } = useGLTF('/road.glb');
+  const { scene } = useGLTF('/models/road.glb');
 
 
 

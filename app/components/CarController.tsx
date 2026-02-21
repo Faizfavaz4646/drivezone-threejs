@@ -13,7 +13,7 @@ export function CarController({isNight}:Props) {
   const carRef = useRef<THREE.Group>(null)
   const leftTarget = useRef<THREE.Object3D>(new THREE.Object3D())
   const rightTarget = useRef<THREE.Object3D>(new THREE.Object3D())
-  const { scene } = useGLTF('/car1.glb')
+  const { scene } = useGLTF('/models/car1.glb')
   const {camera}=useThree()
 
   const [keys, setKeys] = useState({
