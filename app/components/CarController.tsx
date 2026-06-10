@@ -85,6 +85,35 @@ export function CarController({isNight}:Props) {
     }
   }, [])
 
+  // Synchronize followCar state with the window/DOM overlay
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent('follow-car-changed', { detail: { followCar } }));
+  }, [followCar]);
+
+  // Listen for custom events from the DOM overlay (touch controls & toggle buttons)
+  useEffect(() => {
+    const handleCarControl = (e: Event) => {
+      const customEvent = e as CustomEvent<{ action: 'forward' | 'backward' | 'left' | 'right'; value: boolean }>;
+      if (customEvent.detail) {
+        const { action, value } = customEvent.detail;
+        setKeys((k) => ({ ...k, [action]: value }));
+      }
+    };
+
+    const handleToggleFollow = () => {
+      setFollowCar((prev) => !prev);
+    };
+
+    window.addEventListener('car-control', handleCarControl);
+    window.addEventListener('toggle-follow-car', handleToggleFollow);
+
+    return () => {
+      window.removeEventListener('car-control', handleCarControl);
+      window.removeEventListener('toggle-follow-car', handleToggleFollow);
+    };
+  }, []);
+
+
  useFrame((_, delta) => {
   if (!carRef.current) return
 
