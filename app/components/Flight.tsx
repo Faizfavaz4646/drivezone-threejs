@@ -5,7 +5,7 @@ import * as THREE from "three"
  export function Flight(){
     const flightRef=useRef<THREE.Group>(null)
     const {scene}=useGLTF('/models/flight.glb')
-    let angle=useRef(0)
+    const angle=useRef(0)
 
     useFrame(() => {
   angle.current += 0.01

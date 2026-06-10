@@ -9,7 +9,7 @@ import Loader from '@/app/components/Loader'
 
 
 export default function Page() {
-  const controlsRef = useRef<any>(null);
+  const controlsRef = useRef<React.ComponentRef<typeof OrbitControls>>(null);
   const [hover,setHover]=useState(false)
   const [isNight, setIsNight] = useState(false)
   const {progress}= useProgress()

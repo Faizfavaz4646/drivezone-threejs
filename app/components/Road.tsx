@@ -3,7 +3,6 @@
 import { useGLTF } from "@react-three/drei";
 import { useRef } from "react";
 import { Mesh } from "three";
-import { useFrame } from "@react-three/fiber";
 
 type RoadProps = {
   position?: [number, number, number];

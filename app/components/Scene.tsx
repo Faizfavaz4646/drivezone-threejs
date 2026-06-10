@@ -1,5 +1,4 @@
 'use client'
-import * as THREE from "three"
 import { useThree } from '@react-three/fiber'
 import { useEffect } from 'react'
 import { OrbitControls, Sky, Stars } from '@react-three/drei'
@@ -9,7 +8,7 @@ import StreetLight from '@/app/components/Streetlight'
 import { CarController } from '@/app/components/CarController'
 import { Flight } from './Flight'
 import RoadSett from './Road'
-import { TransparentRoad } from "./ TransparentRoad"
+import { TransparentRoad } from "./TransparentRoad"
 
 
 interface SceneProps {
@@ -138,7 +137,6 @@ export default function Scene({ isNight }: SceneProps) {
       <StreetLight position={[695, 0, -8]} lightOn={isNight} />
      
 
-c
       <CarController isNight={isNight}  />
       <Flight />
       <RoadSett position={[400,8,500]} scale={[1,0.5,0.5]} rotation={[0,1.5,0]}  />
