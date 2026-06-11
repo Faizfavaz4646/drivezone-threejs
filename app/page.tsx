@@ -11,7 +11,22 @@ export default function Page() {
   const [hover, setHover] = useState(false)
   const [isNight, setIsNight] = useState(false)
   const { progress } = useProgress()
-  const isLoaded = progress >= 100
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  // Mark as loaded when progress is 100
+  useEffect(() => {
+    if (progress >= 100) {
+      setIsLoaded(true)
+    }
+  }, [progress])
+
+  // Fallback timer to guarantee loader dismisses on Safari/iOS even if progress hook gets stuck
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true)
+    }, 6000)
+    return () => clearTimeout(timer)
+  }, [])
 
   const [followCar, setFollowCar] = useState(true)
 
@@ -69,6 +84,9 @@ export default function Page() {
         }
         .control-btn {
           -webkit-tap-highlight-color: transparent;
+          touch-action: none;
+          user-select: none;
+          -webkit-user-select: none;
         }
       `}} />
 
@@ -113,9 +131,9 @@ export default function Page() {
               {/* Steering Controls (Left / Right) */}
               <div className="flex gap-4 pointer-events-auto">
                 <button
-                  onTouchStart={() => handleTouchControl('left', true)}
-                  onTouchEnd={() => handleTouchControl('left', false)}
-                  onTouchCancel={() => handleTouchControl('left', false)}
+                  onTouchStart={(e) => { e.preventDefault(); handleTouchControl('left', true); }}
+                  onTouchEnd={(e) => { e.preventDefault(); handleTouchControl('left', false); }}
+                  onTouchCancel={(e) => { e.preventDefault(); handleTouchControl('left', false); }}
                   onMouseDown={() => handleTouchControl('left', true)}
                   onMouseUp={() => handleTouchControl('left', false)}
                   onMouseLeave={() => handleTouchControl('left', false)}
@@ -126,9 +144,9 @@ export default function Page() {
                   </svg>
                 </button>
                 <button
-                  onTouchStart={() => handleTouchControl('right', true)}
-                  onTouchEnd={() => handleTouchControl('right', false)}
-                  onTouchCancel={() => handleTouchControl('right', false)}
+                  onTouchStart={(e) => { e.preventDefault(); handleTouchControl('right', true); }}
+                  onTouchEnd={(e) => { e.preventDefault(); handleTouchControl('right', false); }}
+                  onTouchCancel={(e) => { e.preventDefault(); handleTouchControl('right', false); }}
                   onMouseDown={() => handleTouchControl('right', true)}
                   onMouseUp={() => handleTouchControl('right', false)}
                   onMouseLeave={() => handleTouchControl('right', false)}
@@ -143,9 +161,9 @@ export default function Page() {
               {/* Throttle & Brake Controls (Forward / Backward) */}
               <div className="flex flex-col gap-4 pointer-events-auto items-center">
                 <button
-                  onTouchStart={() => handleTouchControl('forward', true)}
-                  onTouchEnd={() => handleTouchControl('forward', false)}
-                  onTouchCancel={() => handleTouchControl('forward', false)}
+                  onTouchStart={(e) => { e.preventDefault(); handleTouchControl('forward', true); }}
+                  onTouchEnd={(e) => { e.preventDefault(); handleTouchControl('forward', false); }}
+                  onTouchCancel={(e) => { e.preventDefault(); handleTouchControl('forward', false); }}
                   onMouseDown={() => handleTouchControl('forward', true)}
                   onMouseUp={() => handleTouchControl('forward', false)}
                   onMouseLeave={() => handleTouchControl('forward', false)}
@@ -156,9 +174,9 @@ export default function Page() {
                   </svg>
                 </button>
                 <button
-                  onTouchStart={() => handleTouchControl('backward', true)}
-                  onTouchEnd={() => handleTouchControl('backward', false)}
-                  onTouchCancel={() => handleTouchControl('backward', false)}
+                  onTouchStart={(e) => { e.preventDefault(); handleTouchControl('backward', true); }}
+                  onTouchEnd={(e) => { e.preventDefault(); handleTouchControl('backward', false); }}
+                  onTouchCancel={(e) => { e.preventDefault(); handleTouchControl('backward', false); }}
                   onMouseDown={() => handleTouchControl('backward', true)}
                   onMouseUp={() => handleTouchControl('backward', false)}
                   onMouseLeave={() => handleTouchControl('backward', false)}

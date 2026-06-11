@@ -16,16 +16,14 @@ interface SceneProps {
 }
 
 export default function Scene({ isNight }: SceneProps) {
-  const { scene } = useThree()
-  useEffect(() => {
-    scene.background = null
-  }, [scene])
-
   return (
     <>
       {/* DAY MODE  */}
       {!isNight && (
         <>
+          {/* Sky background color fallback to avoid Safari transparent blending issues */}
+          <color attach="background" args={['#bfe3ff']} />
+
           {/* Skybox  */}
           <Sky sunPosition={[100, 50, -100]} turbidity={8}  distance={100000}  />
 
